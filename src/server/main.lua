@@ -13,8 +13,9 @@ end, function(error)
 end)
 
 -- //[Player Handler]\\ --
-RegisterNetEvent("", function(source)
-
+RegisterNetEvent("playerJoining", function(source)
+    if not source then return end
+    
     Core.Functions:TryCatch(function()
         if Core.Cache.Players[source] then
             print("[playerCreated Handler] Override player: " .. source)
@@ -26,40 +27,13 @@ RegisterNetEvent("", function(source)
     end)
 end)
 
-RegisterNetEvent("", function(source)
+RegisterNetEvent("playerDropped", function()
+    if not source then return end
 
     Core.Functions:TryCatch(function()
         Core.Cache.Players[source] = nil
         print("[playerDeleted Handler] Player leaved: " .. source)
     end, function(error)
         print("[playerDeleted Handler] Error: " .. error)
-    end)
-end)
-
--- //[Entity Handler]\\ --
-RegisterNetEvent("entityCreated", function(entity)
-    if not DoesEntityExist(entity) or entity == 1 then return end
-
-    local netId = NetworkGetNetworkIdFromEntity(entity)
-
-    Core.Functions:TryCatch(function()
-        if Core.Cache.Entitys[netId] then  
-            print("warn", "[entityCreated Handler] Override entity: " .. netId)
-        end
-        Core.Cache.Entitys[netId] = Core.Classes:createEntity(entity)
-        print("info", "[entityCreated Handler] Entity Created: " .. netId)
-    end, function(error)
-        print("error", "[entityCreated Handler] Error: " .. error)
-    end)
-end)
-
-RegisterNetEvent("entityDeleted", function(entity)
-    local netId = NetworkGetNetworkIdFromEntity(entity)
-
-    Core.Functions:TryCatch(function()
-        Core.Entitys[netId] = nil
-        print("warn", "[entityDeleted Handler] Entity Deleted: " .. netId)
-    end, function(error)
-        print("error", "[entityDeleted Handler] Error: " .. error)
     end)
 end)

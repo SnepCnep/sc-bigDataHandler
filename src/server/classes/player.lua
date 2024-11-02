@@ -1,7 +1,7 @@
 function Core.Classes:createUser(source)
     self = {}
 
-    -- //[Varaibles]\\ --
+    -- //[Variables]\\ --
     self.source = source
     self.name = GetPlayerName(source)
     self.identifiers = GetPlayerIdentifiers(source)

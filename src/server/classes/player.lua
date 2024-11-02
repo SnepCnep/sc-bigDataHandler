@@ -6,14 +6,27 @@ function Core.Classes:createUser(source)
     self.name = GetPlayerName(source)
     self.identifiers = GetPlayerIdentifiers(source)
 
-
-    -- //[Functions]\\ --
-    self.getName = function()
-        return self.name
+    -- //[Functions: Getter]\\ --
+    self.get = function(key)
+        return self[key]
     end
 
-    self.getIdentifiers = function()
-        return self.identifiers
+    -- //[Functions: Setter]\\ --
+    self.set = function(key, value)
+        local blackList = { "source", "name", "identifiers" }
+
+        if blackList[key] then 
+            error("This key is not allowed to be override!") 
+        end
+
+        self[key] = value
+    end
+
+    -- //[Functions: ESX]\\ --
+    self.xPlayer = function()
+        if not Core.ESX.Installed then return end
+
+        return ESX.GetPlayerFromId(self.source)
     end
 
     return self

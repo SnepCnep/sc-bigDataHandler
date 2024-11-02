@@ -1,5 +1,5 @@
--- [Function: TryCatche]
-function Core.Functions:TryCatche(func, catch)
+-- [Function: TryCatch]
+function Core.Functions:TryCatch(func, catch)
     local promise = promise.new()
 
     CreateThread(function()

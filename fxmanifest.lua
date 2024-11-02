@@ -3,9 +3,9 @@ game "gta5"
 use_fxv2_oal "yes"
 lua54 "yes"
 
-name "Big Data Handler"
+name "Boilerplate"
 author "SnepCnep"
-description "Data Handler"
+description "Boilerplate for FiveM resources"
 version "1.0.0"
 
 client_scripts { 

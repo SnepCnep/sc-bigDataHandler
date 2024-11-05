@@ -4,7 +4,7 @@ exports("Init", function()
     local init = {}
 
     init.Functions = Core.Functions
-    init.Http = Core.http
+    init.Http = Core.Http
 
     return init
 end)

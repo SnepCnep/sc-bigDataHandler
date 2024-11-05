@@ -14,9 +14,9 @@ function Core.Classes:createUser(source)
 
     -- //[Functions: Setter]\\ --
     self.set = function(key, value)
-        local blackList = { ["source"] = true, ["name"] = true, ["license"] = true, ["identifiers"] = true }
-        if blackList[key] then 
-            error("This key is not allowed to be override!")
+        local blacklist = { ["source"] = true, ["name"] = true, ["license"] = true, ["identifiers"] = true }
+        if blacklist[key] then 
+            error("This key is not allowed to be overridden!")
         end
 
         self[key] = value

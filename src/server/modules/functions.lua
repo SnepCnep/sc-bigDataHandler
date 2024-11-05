@@ -23,16 +23,16 @@ function Core.Functions:getPlayer(source)
     return (Core.Cache.Players[source] or false)
 end
 
--- [Function: getEntitie] --
-function Core.Functions:getEntitie(entity)
+-- [Function: getEntity] --
+function Core.Functions:getEntity(entity)
     if not entity or not DoesEntityExist(entity) then return false end
 
     local netId = NetworkGetNetworkIdFromEntity(entity)
     return (Core.Cache.Entities[netId] or false)
 end
 
--- [Function: getEntitieByNetId] --
-function Core.Functions:getEntitieByNetId(netId)
+-- [Function: getEntityByNetId] --
+function Core.Functions:getEntityByNetId(netId)
     if not netId then return false end
 
     return (Core.Cache.Entities[netId] or false)
@@ -45,10 +45,10 @@ function Core.Functions:exports(exportName, exportFunc, exportResource)
 
     if not exportResource then
         _exports(('_cfx_export_sc-boilerplate_%s'):format(exportName), exportFunc)
-        debug("Create a export: " .. exportName)
+        debug("Create an export: " .. exportName)
         return
     end
-    debug("Create a export: " .. exportResource .. " - " .. exportName)
+    debug("Create an export: " .. exportResource .. " - " .. exportName)
     _exports(('_cfx_export_%s_%s'):format(exportResource, exportName), exportFunc)
 end
 exports = function(...)

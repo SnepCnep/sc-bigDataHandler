@@ -42,6 +42,9 @@ end
 local _exports = exports
 function Core.Functions:exports(exportName, exportFunc, exportResource)
     if not exportName or not exportFunc then return end
+    if GetInvokingResource() then
+        return print("error", "You cant use this export outside of the Core.")
+    end
 
     if not exportResource then
         AddEventHandler(('__cfx_export_sc-boilerplate_%s'):format(exportName), function(setCB)

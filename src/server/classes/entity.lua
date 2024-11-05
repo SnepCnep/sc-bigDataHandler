@@ -17,19 +17,12 @@ function Core.Classes:createEntity(entity)
     self.entType = GetEntityType(entity) -- 1 = Ped, 2 = Vehicle, 3 = Object
     self.entModel = GetEntityModel(entity)
 
-    -- //[Load Functions]\\ --
     if self.entType == 1 then
-        for k, v in pairs(EntityFunctions["ped"]) do
-            self[k] = v
-        end
+        setmetatable(self, { __index = EntityFunctions["ped"] })
     elseif self.entType == 2 then
-        for k, v in pairs(EntityFunctions["vehicle"]) do
-            self[k] = v
-        end
+        setmetatable(self, { __index = EntityFunctions["vehicle"] })
     elseif self.entType == 3 then
-        for k, v in pairs(EntityFunctions["object"]) do
-            self[k] = v
-        end
+        setmetatable(self, { __index = EntityFunctions["object"] })
     end
 
     return self

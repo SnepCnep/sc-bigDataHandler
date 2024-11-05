@@ -26,9 +26,11 @@ function Core.Classes:createUser(source)
 
     -- //[Functions: ESX]\\ --
     self.xPlayer = function()
-        if not Core.ESX.Installed then return end
+        if not Core.ESX.Installed then 
+            error("ESX is not installed or not ready!")
+        end
 
-        return ESX.GetPlayerFromId(self.source)
+        return Core.ESX.GetPlayerFromId(self.source)
     end
 
     return self

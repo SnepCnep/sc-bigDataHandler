@@ -1,4 +1,4 @@
-exports("TryCatch", Core.Functions.TryCatch)
+exports("trycatch", Core.Functions.TryCatch)
 exports("exports", Core.Functions.exports)
 exports("Init", function()
     local init = {}

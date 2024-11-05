@@ -1,8 +1,7 @@
 -- //[Varaibles]\\ --
 Core = { 
     ESX = { Installed = false },
-    Players = {},
-    Cache = {},
+    Cache = { Players = {} },
     Classes = {},
     Functions = {},
     http = {}
@@ -10,8 +9,6 @@ Core = {
 ---@Core
 ---@Comment ESX Instance
 ---@Core.ESX
----@Comment Players Cache
----@Core.Players
 ---@Comment Cache for global cache and cache system
 ---@Core.Cache
 ---@Comment Classes for creating classes

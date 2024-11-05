@@ -16,6 +16,13 @@ function Core.Functions:TryCatch(func, catch)
     return promise
 end
 
+-- [Function: getPlayer] --
+function Core.Functions:getPlayer(source)
+    if not source then return end
+
+    return Core.Cache.Players[source]
+end
+
 -- [Function: exports] --
 local _exports = exports
 function Core.Functions:exports(exportName, exportFunc, exportResource)
@@ -23,9 +30,10 @@ function Core.Functions:exports(exportName, exportFunc, exportResource)
 
     if not exportResource then
         _exports(('_cfx_export_sc-boilerplate_%s'):format(exportName), exportFunc)
+        debug("Create a export: " .. exportName)
         return
     end
-
+    debug("Create a export: " .. exportResource .. " - " .. exportName)
     _exports(('_cfx_export_%s_%s'):format(exportResource, exportName), exportFunc)
 end
 exports = function(...)

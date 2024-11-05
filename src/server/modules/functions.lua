@@ -53,7 +53,7 @@ function Core.Functions:exports(exportName, exportFunc, exportResource)
         debug("Create an export: " .. exportName)
         return
     end
-    
+
     AddEventHandler(('__cfx_export_%s_%s'):format(exportResource, exportName), function(setCB)
         setCB(exportName)
     end)

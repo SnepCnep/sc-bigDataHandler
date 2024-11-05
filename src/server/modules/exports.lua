@@ -1,9 +1,16 @@
-exports("trycatch", Core.Functions.TryCatch)
-exports("Init", function()
-    local init = {}
+--[[
+    How to use!!!! - not tested!!!
 
-    init.Functions = Core.Functions
-    init.Http = Core.Http
+    local tryCatch = exports["bp:functions"].trycatch
 
-    return init
-end)
+    tryCatch(function()
+        print("Hello World")
+    end, function(error)
+        print("Error: " .. error)
+    end)
+]]
+
+exports("trycatch", Core.Functions.TryCatch, "bp:functions")
+exports("getPlayer", Core.Functions.getPlayer, "bp:functions")
+exports("getEntity", Core.Functions.getEntity, "bp:functions")
+exports("getEntityByNetId", Core.Functions.getEntityByNetId, "bp:functions")

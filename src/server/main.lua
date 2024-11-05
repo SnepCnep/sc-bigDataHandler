@@ -1,4 +1,4 @@
--- //[Varaibles]\\ --
+-- //[Variables]\\ --
 Core = { 
     ESX = { Installed = false },
     Cache = { Players = {}, Entities = {} },

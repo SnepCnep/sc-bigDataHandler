@@ -1,5 +1,12 @@
 -- //[Varaibles]\\ --
-Core = { ESX = { Installed = false }, Players = {}, Cache = {}, Classes = {}, Functions = {} }
+Core = { 
+    ESX = { Installed = false },
+    Players = {},
+    Cache = {},
+    Classes = {},
+    Functions = {},
+    http = {}
+}
 -- Classes = [ ClassName ] = Class Data Table
 -- Functions = [ FunctionName ] = Function Data Table
 -- DataBase = { connected = false }

@@ -44,12 +44,17 @@ function Core.Functions:exports(exportName, exportFunc, exportResource)
     if not exportName or not exportFunc then return end
 
     if not exportResource then
-        _exports(('_cfx_export_sc-boilerplate_%s'):format(exportName), exportFunc)
+        AddEventHandler(('__cfx_export_sc-boilerplate_%s'):format(exportName), function(setCB)
+            setCB(exportName)
+        end)
         debug("Create an export: " .. exportName)
         return
     end
+    
+    AddEventHandler(('__cfx_export_%s_%s'):format(exportResource, exportName), function(setCB)
+        setCB(exportName)
+    end)
     debug("Create an export: " .. exportResource .. " - " .. exportName)
-    _exports(('_cfx_export_%s_%s'):format(exportResource, exportName), exportFunc)
 end
 exports = function(...)
     return Core.Functions:exports(...)

@@ -1,5 +1,5 @@
 function Core.Classes:createUser(source)
-    self = {}
+    local self = {}
 
     -- //[Variables]\\ --
     self.source = source

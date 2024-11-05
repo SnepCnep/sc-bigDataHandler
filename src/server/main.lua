@@ -7,10 +7,22 @@ Core = {
     Functions = {},
     http = {}
 }
--- Classes = [ ClassName ] = Class Data Table
--- Functions = [ FunctionName ] = Function Data Table
--- DataBase = { connected = false }
+---@Core
+---@Comment ESX Instance
+---@Core.ESX
+---@Comment Players Cache
+---@Core.Players
+---@Comment Cache for global cache and cache system
+---@Core.Cache
+---@Comment Classes for creating classes
+---@Core.Classes
+---@Comment Functions for creating global functions
+---@Core.Functions
+---@Comment HTTP for creating http requests
+---@Core.http
 
+
+-- //[Load ESX]\\ --
 Core.Functions:TryCatch(function()
     ESX = exports["es_extended"]:getSharedObject()
     Core.ESX = ESX

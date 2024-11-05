@@ -29,3 +29,13 @@ end
 print = function(...)
     Core.Functions:print(...)
 end
+
+-- [Function: debug] --
+function Core.Functions:debug(...)
+    if not Config.Debug then return end
+
+    oldPrint("^3[Core]", "^7[Debug] ^4: ", ...)
+end
+debug = function(...)
+    Core.Functions:debug(...)
+end

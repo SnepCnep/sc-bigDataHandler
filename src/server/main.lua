@@ -1,7 +1,7 @@
 -- //[Varaibles]\\ --
 Core = { 
     ESX = { Installed = false },
-    Cache = { Players = {} },
+    Cache = { Players = {}, Entities = {} },
     Classes = {},
     Functions = {},
     http = {}
@@ -54,3 +54,20 @@ RegisterNetEvent("playerDropped", function()
         print("error", "[playerDropped Handler] Error: " .. error)
     end)
 end)
+
+-- //[Entity Handler]\\ --
+RegisterNetEvent("--CreatedEntitue--", function(entity)
+    if not DoesEntityExist(entity) then return end
+    local netId = NetworkGetNetworkIdFromEntity(entity)
+
+    Core.Functions:TryCatch(function()
+        if Core.Cache.Entities[netId] then
+            print("warn", "[Entity Handler] Entity already exists: " .. netId)
+        end
+        Core.Cache.Entities[netId] = Core.Classes:createEntity(entity)
+        debug("[Entity Handler] Entity created: " .. netId)
+    end, function(error)
+        print("error", "[Entity Handler] Error: " .. error)
+    end)
+end)
+

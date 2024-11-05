@@ -18,9 +18,24 @@ end
 
 -- [Function: getPlayer] --
 function Core.Functions:getPlayer(source)
-    if not source then return end
+    if not source then return false end
 
-    return Core.Cache.Players[source]
+    return (Core.Cache.Players[source] or false)
+end
+
+-- [Function: getEntitie] --
+function Core.Functions:getEntitie(entity)
+    if not entity or not DoesEntityExist(entity) then return false end
+
+    local netId = NetworkGetNetworkIdFromEntity(entity)
+    return (Core.Cache.Entities[netId] or false)
+end
+
+-- [Function: getEntitieByNetId] --
+function Core.Functions:getEntitieByNetId(netId)
+    if not netId then return false end
+
+    return (Core.Cache.Entities[netId] or false)
 end
 
 -- [Function: exports] --

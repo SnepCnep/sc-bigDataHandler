@@ -4,7 +4,8 @@ function Core.Classes:createUser(source)
     -- //[Variables]\\ --
     self.source = source
     self.name = GetPlayerName(source)
-    self.identifiers = GetPlayerIdentifiers(source)
+    self.license = (GetPlayerIdentifierByType(source, "license") or "N/A")
+    self.identifiers = (GetPlayerIdentifiers(source) or {})
 
     -- //[Functions: Getter]\\ --
     self.get = function(key)
@@ -12,13 +13,10 @@ function Core.Classes:createUser(source)
     end
 
     -- //[Functions: Setter]\\ --
-    self.set = function(key, value, override)
-        local blackList = { "source", "name", "identifiers" }
-        if not override and self[key] then 
-            error("This key is already set!")
-        end
+    self.set = function(key, value)
+        local blackList = { ["source"] = true, ["name"] = true, ["license"] = true, ["identifiers"] = true }
         if blackList[key] then 
-            error("This key is not allowed to be override!") 
+            error("This key is not allowed to be override!")
         end
 
         self[key] = value
